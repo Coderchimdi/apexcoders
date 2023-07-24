@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block header %}{% include 'header.html' %}{% endblock header %}
+
+{% block banner %} {% include 'banner.html' %} {% endblock banner %}
+  
+{% block content %}
+
+
+<!-- content -->
+<div class="container mb-5">
+  <h1 class="text-center title mt-5 mb-5">{{catname.name}}</h1>
+  <div class="row">
+    
+    {% for item in cate %}
+    <div class="col-12 col-md-6 col-lg-3 tcard">
+      <div class="card">
+          <a href=""><img src="{{item.pix.url}}" class="card-img-top" alt="..." style="height: 250px;"></a>
+          <div class="card-body">
+            <h5 class="card-title">{{item.title}}</h5>
+            {% if item.promo_price %}
+            <p class="Price">₦{{item.promo_price}}</p>
+            <del><p class="Price">₦{{item.price}}</p></del>
+             {% else %}
+             <p class="Price">₦{{item.price}}</p>
+             {% endif %}
+            <a href="#" class="btn btn-primary">Add To Cart</a>
+          </div>
+      </div>
+</div>
+    {% endfor %}
+      
+      
+</div>
+</div>
+  
+
+<!-- content done -->
+{% endblock content %}
+{% block footer %} {% include 'footer.html' %} {% endblock footer %}

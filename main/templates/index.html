@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% block header %}{% include 'header.html' %}{% endblock header %}
+
+{% block carousel %} {% include 'carousel.html' %} {% endblock carousel %}
+  
+{% block content %}
+<div class="container mb-5">
+  <h1 class="text-center title mt-5 mb-5">Top Selling Products</h1>
+  <div class="row">
+    
+    {% for item in top %}
+    
+      <div class="col-12 col-md-6 col-lg-3 tcard">
+        <div class="card">
+          <a href="{% url 'detail' item.id %}" class="wwd"><img src="{{item.pix.url}}" class="card-img-top" alt="..." style="height: 250px;"></a>
+          <div class="card-body">
+           <h5 class="card-title">{{item.title}}</h5>
+            
+           {% if item.promo_price %}
+           <p class="Price">₦{{item.promo_price}}</p>
+           <del><p class="Price">₦{{item.price}}</p></del>
+           {% else %}
+           <p class="Price">₦{{item.price}}</p>       
+           {% endif %}
+            <hr>
+            <a href="#" class="btn btn-primary">Add To Cart</a>
+          </div>
+        </div>
+     </div>
+      
+    {% endfor %}
+      
+  </div>
+</div>
+<div class="container-fluid mt-5 mb-5 catbag">
+<h1 class="text-center title mt-5 mb-7">Browse By Categories</h1>
+<div class="row categ">
+  
+  {% for category in category %}
+  <div class="col-12 col-md-6">
+    <a href="{% url 'category' category.id category.catslug %}"><img src="{{category.catimg.url}}" alt=""></a>
+    <p class="badge bg-black text-white">{{category.name}}</p>
+  </div>
+  
+  {% endfor %}
+</div>
+</div>
+<div class="container mb-5">
+<h1 class="text-center title mt-5 mb-5">Featured Products</h1>
+<div class="row">
+  
+  {% for item in feature %}
+  <div class="col-12 col-md-6 col-lg-3 tcard">
+    <div class="card">
+        <a href="{% url 'detail' item.id %}"><img src="{{item.pix.url}}" class="card-img-top" alt="..." style="height: 250px;"></a>
+        <div class="card-body">
+          <h5 class="card-title">{{item.title}}</h5>
+          
+          {% if item.promo_price %}
+          <p class="Price">₦{{item.promo_price}}</p>
+          <del><p class="Price">₦{{item.price}}</p></del>
+          {% else %}
+          <p class="Price">₦{{item.price}}</p>
+          {% endif %}
+          
+          <a href="#" class="btn btn-primary">Add To Cart</a>
+        </div>
+
+      </div>
+</div>
+  {% endfor %}
+    
+    
+  </div>
+</div>
+{% endblock content %}
+{% block footer %} {% include 'footer.html' %} {% endblock footer %}

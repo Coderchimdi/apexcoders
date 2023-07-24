@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block header %}{% include 'header.html' %}{% endblock header %}
+
+{% block banner %} {% include 'banner.html' %} {% endblock banner %}
+  
+{% block content %}
+<!-- content -->
+<div class="container mb-5 mt-5 det">
+  <div class="card mb-6">
+    <div class="row g-0">
+      <div class="col-md-6">
+        <img src="{{prodet.pix.url}}" class="img-fluid rounded-start" alt="..." style="height: 430px;">
+      </div>
+      <div class="col-md-6">
+        <div class="card-body detbody">
+          <h1 class="card-title">{{prodet.title}}</h1>
+          
+          {% if prodet.promo_price %}
+          <p class="card-text">₦{{prodet.promo_price}}</p>
+          <del><p class="card-text">₦{{prodet.price}}</p></del>
+          {% else %}
+          <p class="card-text">₦{{prodet.price}}</p>
+          {% endif %}
+          <hr>
+          <p>{{prodet.description}}</p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+            Officiis aperiam expedita harum accusamus, nulla tenetur fugiat, itaque sapiente amet, perferendis velit commodi earum? Soluta, tempore.</p>
+            <button class="btn btn-primary">Add To Cart</button>
+        </div>
+      
+      </div>
+    </div>
+  </div>
+</div>
+<!-- content done -->
+
+
+{% endblock content %}
+{% block footer %} {% include 'footer.html' %} {% endblock footer %}
